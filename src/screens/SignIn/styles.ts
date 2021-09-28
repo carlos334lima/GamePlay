@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     color: theme.colors.heading,
+    fontWeight: "bold",
     textAlign: "center",
     fontSize: 40,
     fontFamily: 'Rajdhani_700Bold',

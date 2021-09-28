@@ -1,0 +1,18 @@
+import React from "react";
+import { View } from "react-native";
+import Profile from "../../components/Profile";
+
+//@styles
+import { styles } from "./styles";
+
+const Home = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Profile />
+      </View>
+    </View>
+  );
+};
+
+export { Home };

@@ -3,6 +3,8 @@ import { Image, Text, View } from "react-native";
 
 //@assets
 import IlustrationImg from "../../assets/illustration.png";
+
+//@components
 import { ButtonIcon } from "../../components/ButtonIcon";
 
 //@styles
@@ -15,14 +17,14 @@ export function Sign() {
 
       <View style={styles.content}>
         <Text style={styles.title}>
-          Organize {"\n"}suas jogatinas{"\n"}facilmente
+          Conecte-se {"\n"}e organize {"\n"}suas jogatinas
         </Text>
 
         <Text style={styles.subtitle}>
           crie grupos para jogar seus games{"\n"}favoritos com seus amigos
         </Text>
 
-        <ButtonIcon title="Entrar com o Discord"/>
+        <ButtonIcon title="Entrar com o Discord" />
       </View>
     </View>
   );
