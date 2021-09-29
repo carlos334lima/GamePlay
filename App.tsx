@@ -16,6 +16,7 @@ import { Sign } from "./src/screens/SignIn";
 //@components
 import { Background } from "./src/components/Background";
 import { Home } from "./src/screens/Home";
+import { Routes } from "./src/routes";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -37,7 +38,7 @@ export default function App() {
         translucent
       />
 
-      <Home />
+      <Routes />
     </Background>
   );
 }

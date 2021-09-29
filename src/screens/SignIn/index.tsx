@@ -1,6 +1,9 @@
 import React from "react";
 import { Image, Text, View } from "react-native";
 
+//@libraries
+import { useNavigation } from "@react-navigation/native";
+
 //@assets
 import IlustrationImg from "../../assets/illustration.png";
 
@@ -11,6 +14,12 @@ import { ButtonIcon } from "../../components/ButtonIcon";
 import { styles } from "./styles";
 
 export function Sign() {
+  const navigation = useNavigation(); 
+
+  function handleSignIn() {
+    navigation.navigate('Home')
+  }
+
   return (
     <View style={styles.container}>
       <Image source={IlustrationImg} />
@@ -24,7 +33,7 @@ export function Sign() {
           crie grupos para jogar seus games{"\n"}favoritos com seus amigos
         </Text>
 
-        <ButtonIcon title="Entrar com o Discord" />
+        <ButtonIcon title="Entrar com o Discord" onPress={handleSignIn}/>
       </View>
     </View>
   );
