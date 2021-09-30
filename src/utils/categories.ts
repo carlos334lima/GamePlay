@@ -1,3 +1,4 @@
+//@assets
 import RankedSvg from "../assets/ranked.svg";
 import DuelSvg from "../assets/duel.svg";
 import FunSvg from "../assets/fun.svg";
