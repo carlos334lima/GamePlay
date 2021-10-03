@@ -4,13 +4,14 @@ import { View, FlatList } from "react-native";
 //@components
 import Profile from "../../components/Profile";
 import { ButtonAdd } from "../../components/ButtonAdd";
+import { Background } from "../../components/Background";
+import { ListHeader } from "../../components/ListHeader";
+import { ListDivider } from "../../components/ListDivider";
+import { Appointment } from "../../components/Appointment";
 import { CategorySelect } from "../../components/CategorySelect";
 
 //@styles
 import { styles } from "./styles";
-import { ListHeader } from "../../components/ListHeader";
-import { Appointment } from "../../components/Appointment";
-import { ListDivider } from "../../components/ListDivider";
 
 const Home = () => {
   const [category, setCategory] = useState("");
@@ -49,30 +50,31 @@ const Home = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Profile />
-        <ButtonAdd />
-      </View>
-   
+    <Background>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Profile />
+          <ButtonAdd />
+        </View>
+
         <CategorySelect
           categorySelected={category}
           setCategory={handleCategorySelect}
         />
-     
 
-      <ListHeader title="Partidas agendadas" subtitle={`Total 20`} />
+        <ListHeader title="Partidas agendadas" subtitle={`Total 20`} />
 
-      <FlatList
-        data={appointments}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Appointment data={item}/>}
-        style={styles.matches}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 69 }}
-        ItemSeparatorComponent={() => <ListDivider />}
-      />
-    </View>
+        <FlatList
+          data={appointments}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <Appointment data={item} />}
+          style={styles.matches}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 69 }}
+          ItemSeparatorComponent={() => <ListDivider />}
+        />
+      </View>
+    </Background>
   );
 };
 

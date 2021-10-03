@@ -8,33 +8,36 @@ import { useNavigation } from "@react-navigation/native";
 import IlustrationImg from "../../assets/illustration.png";
 
 //@components
+import { Background } from "../../components/Background";
 import { ButtonIcon } from "../../components/ButtonIcon";
 
 //@styles
 import { styles } from "./styles";
 
 export function Sign() {
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
 
   function handleSignIn() {
-    navigation.navigate('Home')
+    navigation.navigate("Home");
   }
 
   return (
-    <View style={styles.container}>
-      <Image source={IlustrationImg} />
+    <Background>
+      <View style={styles.container}>
+        <Image source={IlustrationImg} />
 
-      <View style={styles.content}>
-        <Text style={styles.title}>
-          Conecte-se {"\n"}e organize {"\n"}suas jogatinas
-        </Text>
+        <View style={styles.content}>
+          <Text style={styles.title}>
+            Conecte-se {"\n"}e organize {"\n"}suas jogatinas
+          </Text>
 
-        <Text style={styles.subtitle}>
-          crie grupos para jogar seus games{"\n"}favoritos com seus amigos
-        </Text>
+          <Text style={styles.subtitle}>
+            crie grupos para jogar seus games{"\n"}favoritos com seus amigos
+          </Text>
 
-        <ButtonIcon title="Entrar com o Discord" onPress={handleSignIn}/>
+          <ButtonIcon title="Entrar com o Discord" onPress={handleSignIn} />
+        </View>
       </View>
-    </View>
+    </Background>
   );
 }

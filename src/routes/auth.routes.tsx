@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 //@screens
 import { Sign } from "../screens/SignIn";
 import { Home } from "../screens/Home";
+import { theme } from "../styles/theme";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -15,7 +16,7 @@ export const AppRoutes = () => {
       headerMode="none"
       screenOptions={{
         cardStyle: {
-          backgroundColor: "transparent",
+          backgroundColor: theme.colors.secondary100,
         },
       }}
     >

@@ -21,7 +21,7 @@ const Category = ({
   title,
   icon: Icon,
   checked = false,
-  hasCheckBox = false,
+  hasCheckBox = true,
   ...rest
 }: Props) => {
   return (
