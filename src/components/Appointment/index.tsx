@@ -7,12 +7,18 @@ import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 //@components
 import { GuildIcon } from "../GuildIcon";
 
+//@assets
+import SvgPlayer from "../../assets/player.svg";
+import SvgCalendar from "../../assets/calendar.svg";
+
 //@types
 import { AppointmentProps } from "../../@types";
 
 //@styles
 import { styles } from "./styles";
 import { categories } from "../../utils/categories";
+import { theme } from "../../styles/theme";
+import { LinearGradient } from "expo-linear-gradient";
 
 type Props = RectButtonProps & {
   data: AppointmentProps;
@@ -20,16 +26,46 @@ type Props = RectButtonProps & {
 
 export function Appointment({ data, ...rest }: Props) {
   const [category] = categories.filter((item) => item.id === data.category);
+  const { owner } = data.guild;
 
   return (
     <RectButton {...rest}>
       <View style={styles.container}>
-        <GuildIcon />
+        <LinearGradient
+          style={styles.guildIconContainer}
+          colors={[theme.colors.secondary50, theme.colors.secondary70]}
+        >
+          <GuildIcon guildId={data.guild.id} iconId={data.guild.icon} />
+        </LinearGradient>
 
         <View style={styles.content}>
           <View style={styles.header}>
             <Text style={styles.title}>{data.guild.name}</Text>
+
             <Text style={styles.category}>{category.title}</Text>
+          </View>
+
+          <View style={styles.footer}>
+            <View style={styles.dateInfo}>
+              <SvgCalendar />
+
+              <Text style={styles.date}>{data.date}</Text>
+            </View>
+
+            <View style={styles.playersInfo}>
+              <SvgPlayer
+                fill={owner ? theme.colors.primary : theme.colors.on}
+              />
+
+              <Text
+                style={[
+                  styles.player,
+                  { color: owner ? theme.colors.primary : theme.colors.on },
+                ]}
+              >
+                {owner ? "Anfitrião" : "Visitante"}
+              </Text>
+            </View>
           </View>
         </View>
       </View>
