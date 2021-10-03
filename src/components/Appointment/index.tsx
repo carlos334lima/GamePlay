@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 
 //@libraries
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
+import { LinearGradient } from "expo-linear-gradient";
 
 //@components
 import { GuildIcon } from "../GuildIcon";
@@ -11,14 +12,13 @@ import { GuildIcon } from "../GuildIcon";
 import SvgPlayer from "../../assets/player.svg";
 import SvgCalendar from "../../assets/calendar.svg";
 
-//@types
+//@utils
 import { AppointmentProps } from "../../@types";
+import { categories } from "../../utils/categories";
 
 //@styles
 import { styles } from "./styles";
-import { categories } from "../../utils/categories";
 import { theme } from "../../styles/theme";
-import { LinearGradient } from "expo-linear-gradient";
 
 type Props = RectButtonProps & {
   data: AppointmentProps;

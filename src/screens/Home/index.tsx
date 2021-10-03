@@ -10,6 +10,7 @@ import { CategorySelect } from "../../components/CategorySelect";
 import { styles } from "./styles";
 import { ListHeader } from "../../components/ListHeader";
 import { Appointment } from "../../components/Appointment";
+import { ListDivider } from "../../components/ListDivider";
 
 const Home = () => {
   const [category, setCategory] = useState("");
@@ -17,6 +18,19 @@ const Home = () => {
   const appointments = [
     {
       id: "1",
+      guild: {
+        id: "1",
+        name: "Lendários",
+        icon: null,
+        owner: true,
+      },
+      category: "1",
+      date: "22/06 ás 20:40h",
+      description:
+        "É hoje que vamos chegar ao challenge sem perder partida da m10!",
+    },
+    {
+      id: "2",
       guild: {
         id: "1",
         name: "Lendários",
@@ -40,22 +54,23 @@ const Home = () => {
         <Profile />
         <ButtonAdd />
       </View>
-      <View>
+   
         <CategorySelect
           categorySelected={category}
           setCategory={handleCategorySelect}
         />
-      </View>
+     
 
       <ListHeader title="Partidas agendadas" subtitle={`Total 20`} />
 
       <FlatList
         data={appointments}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={{ paddingBottom: 69 }}
+        renderItem={({ item }) => <Appointment data={item}/>}
         style={styles.matches}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <Appointment data={item}/>}
+        contentContainerStyle={{ paddingBottom: 69 }}
+        ItemSeparatorComponent={() => <ListDivider />}
       />
     </View>
   );
