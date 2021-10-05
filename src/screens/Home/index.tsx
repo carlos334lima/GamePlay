@@ -12,8 +12,11 @@ import { CategorySelect } from "../../components/CategorySelect";
 
 //@styles
 import { styles } from "./styles";
+import { useNavigation } from "@react-navigation/core";
 
 const Home = () => {
+  const navigation = useNavigation();
+
   const [category, setCategory] = useState("");
 
   const appointments = [
@@ -49,6 +52,10 @@ const Home = () => {
     categoryId === category ? setCategory("") : setCategory(categoryId);
   }
 
+  function handleOpenAppointmentDetails() {
+    navigation.navigate("AppointmentDetails");
+  }
+
   return (
     <Background>
       <View style={styles.container}>
@@ -67,7 +74,9 @@ const Home = () => {
         <FlatList
           data={appointments}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <Appointment data={item} />}
+          renderItem={({ item }) => (
+            <Appointment data={item} onPress={handleOpenAppointmentDetails} />
+          )}
           style={styles.matches}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 69 }}
