@@ -12,3 +12,10 @@ export type AppointmentProps = {
   date: string;
   description: string;
 };
+
+export type MemberProps = {
+  id: string;
+  username: string;
+  avatar_url: string;
+  status: string;
+}

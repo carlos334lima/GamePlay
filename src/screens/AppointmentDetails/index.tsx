@@ -25,11 +25,13 @@ import { ListDivider } from "../../components/ListDivider";
 import BannerImg from "../../assets/banner.png";
 
 //@utils
-import { AppointmentProps } from "../../@types";
+import { AppointmentProps, MemberProps } from "../../@types";
 
 //@styles
 import { styles } from "./styles";
 import { theme } from "../../styles/theme";
+import { ListHeader } from "../../components/ListHeader";
+import { Member } from "../../components/Member";
 
 type Params = {
   guildSelected: AppointmentProps;
@@ -43,6 +45,30 @@ type GuildWidget = {
 };
 
 export function AppointmentDetails() {
+  const members = [
+    {
+      id: "1",
+      username: "Carlos Lima",
+      avatar_url:
+        "https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png",
+      status: "Online",
+    },
+    {
+      id: "2",
+      username: "Igor Costa",
+      avatar_url:
+        "https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png",
+      status: "Offline",
+    },
+    {
+      id: "3",
+      username: "Igor Costa",
+      avatar_url:
+        "https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png",
+      status: "Offline",
+    },
+  ];
+
   return (
     <Background>
       <Header
@@ -63,6 +89,20 @@ export function AppointmentDetails() {
           </Text>
         </View>
       </ImageBackground>
+
+      <ListHeader title="Jogadores" subtitle="Total 3" />
+
+      <FlatList
+        data={members}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <Member data={item} />}
+        ItemSeparatorComponent={() => <ListDivider />}
+        style={styles.members}
+      />
+
+      <View style={styles.footer}>
+        <ButtonIcon title="Entrar na partida" />
+      </View>
     </Background>
   );
 }
