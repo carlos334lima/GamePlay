@@ -13,6 +13,7 @@ import {
 import * as Linking from "expo-linking";
 import { Fontisto } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { BorderlessButton } from "react-native-gesture-handler";
 
 //@components
