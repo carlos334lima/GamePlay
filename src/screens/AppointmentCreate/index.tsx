@@ -27,13 +27,31 @@ import { theme } from "../../styles/theme";
 import { styles } from "./styles";
 import { SmallInput } from "../../components/SmallInput";
 import { TextArea } from "../../components/TextArea";
+import { Button } from "../../components/Button";
+import { ModalView } from "../../components/ModalView";
+import { Guilds } from "../Guilds";
+import { GuildProps } from "../../@types";
 
 export function AppointmentCreate() {
   const [category, setCategory] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [GuildSelected, setGuildSelected] = useState<GuildProps>(
+    {} as GuildProps
+  );
+
+  function handleOpenModal() {
+    setModalVisible(true);
+  }
+
+  function handleGuildSelected(guildSelected: GuildProps) {
+    setGuildSelected(guildSelected);
+    setModalVisible(false);
+  }
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
+      enabled
       style={styles.container}
     >
       <ScrollView>
@@ -56,13 +74,20 @@ export function AppointmentCreate() {
           />
 
           <View style={styles.form}>
-            <RectButton>
+            <RectButton onPress={handleOpenModal}>
               <View style={styles.select}>
-                {/* <View style={styles.image} /> */}
-                <GuildIcon />
+                {!GuildSelected.icon ? (
+                  <View style={styles.image} />
+                ) : (
+                  <GuildIcon />
+                )}
 
                 <View style={styles.selectBody}>
-                  <Text style={styles.label}>Selecione um servidor</Text>
+                  <Text style={styles.label}>
+                    {GuildSelected.name
+                      ? GuildSelected.name
+                      : "Selecione um servidor"}
+                  </Text>
                 </View>
                 <Feather
                   name="chevron-right"
@@ -110,9 +135,17 @@ export function AppointmentCreate() {
               numberOfLines={5}
               autoCorrect={false}
             />
+
+            <View style={styles.footer}>
+              <Button title="Agendar" />
+            </View>
           </View>
         </Background>
       </ScrollView>
+
+      <ModalView visible={modalVisible}>
+        <Guilds handleGuildSelect={handleGuildSelected} />
+      </ModalView>
     </KeyboardAvoidingView>
   );
 }
